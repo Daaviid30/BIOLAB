@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Bio-Sing-up</title>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/biologia.png') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    </head>
+    <body>
+        {% if msg %}
+            <p class="{{ msg_class }}" id="msg_sing-up">{{msg}}</p>
+        {% endif %}
+
+        <script>
+            var parrafo = document.getElementById("msg_sing-up")
+
+            setTimeout(function(){
+                parrafo.style.display = "none";
+            }, 4000);
+        </script>
+
+        <img src="{{ url_for('static', filename='images/adn.png') }}" id="adn">
+        <div class="panel-principal" id="panel-singup">
+            <h1>Sign-up</h1>
+            <form class="sing-up" action="/form-singup" method="post">
+                <input type="text" placeholder="DNI" autofocus required name="DNI" class="campo"><br>
+                <input type="text" placeholder="Nombre" required name="name" class="campo"><br>
+                <input type="text" placeholder="Apellidos" required name="surname" class="campo"><br>
+                <input type="text" placeholder="Email" required name="email" class="campo"><br>
+                <input type="text" placeholder="Telefono" required name="phone" class="campo"><br>
+                <input type="password" placeholder="Contraseña" required name="password" class="campo"><br>
+                <input type="password" placeholder="Repite contraseña" required name="password2" class="campo"><br>
+                <input type="submit" class="campo" id="enviar">
+            </form>
+        </div>
+    </body>
+</html>
