@@ -5,6 +5,7 @@ Autores: David Martín (100472099) / Iván Llorente (100472242)"""
 import os
 import re
 import conexion_db
+import correo_2FA
 from flask import Flask, request, render_template
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
@@ -24,7 +25,7 @@ def procesar():
     error = True
 
     # Consultamos los datos relevantes para el log-in en la base de datos
-    consulta = "SELECT dni, salt, encryped_pass FROM usuarios WHERE dni = %s"
+    consulta = "SELECT dni, salt, encryped_pass, email FROM usuarios WHERE dni = %s"
     values = (dni,)
     conexion_db.cursor.execute(consulta, values)
     # Guardamos los resultados de la consulta en una lista de tuplas (solo una tupla en este caso -> 1 coincidencia)
@@ -47,6 +48,7 @@ def procesar():
             metodo.verify(password, real_pass)
             respuesta = f"La contraseña es correcta, bienvenido usuario {dni}"
             error = False
+            correo_2FA.mandar_correo(resultados[0][3])
             return render_template('login.html', msg=respuesta, msg_class="acceso")
         except:
             # Si ambas contraseñas no coinciden entonces saltará una excepción de cryptography
