@@ -98,3 +98,11 @@ body{
 #panel-singup{
     margin: 7% auto 0 auto;
 }
+
+#panel-2fa{
+    max-width: 35%;
+}
+
+#panel-2fa p{
+    color: rgb(157, 255, 183);
+}

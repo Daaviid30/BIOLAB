@@ -33,6 +33,8 @@ def mandar_correo(destinatario):
 
         # cerramos servidor
         servidor.quit()
+        return codigo_verificacion
+    
     except Exception as e:
         print("No se pudo mandar el correo", str(e))
     

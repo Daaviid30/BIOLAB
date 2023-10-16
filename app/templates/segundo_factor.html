@@ -13,15 +13,6 @@
 
         {% if msg %}
             <p class="{{ msg_class }}" id="msg_login">{{ msg }}</p>
-            <script>
-                if ("{{ msg_class }}" == "acceso"){
-                var segundo_factor = "/segundo_factor"
-    
-                setTimeout(function(){
-                    window.location.href = segundo_factor;
-                }, 3000);
-            }
-            </script>
         {% endif %}
 
         <script>
@@ -33,14 +24,13 @@
         </script>
         
         <img src="{{ url_for('static', filename='images/adn.png') }}" id="adn">
-        <div class="panel-principal">
-            <h1>Inicio de sesion</h1>
-            <form class="login" action="/formulario" method="post">
-                <input type="text" placeholder="DNI" autofocus required name="DNI" class="campo"><br>
-                <input type="password" placeholder="Contraseña" required name="password" class="campo"><br>
+        <div class="panel-principal" id="panel-2fa">
+            <h1>Codigo de verificacion</h1>
+            <p>Introduzca a continuacion el codigo de verificación<br>enviado al email asociado a su cuenta de BioLab</p>
+            <form class="login" action="/form-2fa" method="post">
+                <input type="text" placeholder="Codigo Verificacion" autofocus required name="codigo" class="campo"><br>
                 <input type="submit" class="campo" id="enviar">
             </form>
-            <a href="/sing-up" id="sing-up">Sign Up</a>
         </div>
     </body>
 </html>
