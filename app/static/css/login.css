@@ -106,3 +106,8 @@ body{
 #panel-2fa p{
     color: rgb(157, 255, 183);
 }
+
+#principal{
+    max-width: 80%;
+    margin: 7% auto;
+}

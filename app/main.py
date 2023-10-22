@@ -54,6 +54,16 @@ def form_2fa():
 
     mensaje_estado = inicio_sesion.comprobar_codigo_verificación(codigo_verificacion)
     return render_template('segundo_factor.html', msg=mensaje_estado[0], msg_class=mensaje_estado[1])
+
+@app.route('/principal')
+def principal():
+    return render_template('principal.html')
+
+@app.route('/form-principal', methods=['POST'])
+def form_principal():
+    titulo = request.form['titulo']
+    cuerpo = request.form['cuerpo']
+
 # Ejecución del programa
 if __name__ == '__main__':
     app.run(debug=True)
