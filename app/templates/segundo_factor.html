@@ -21,7 +21,9 @@
 
             setTimeout(function(){
                 parrafo.style.display = "none";
-                window.location.href = principal;
+                if ("{{ msg_class }}" == "acceso"){
+                    window.location.href = principal;
+                }
             }, 3000);
         </script>
         

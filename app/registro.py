@@ -3,7 +3,7 @@ import conexion_db
 import os
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
-def registro_usuario(dni, name, surname, email, phone, password, password2):
+def registrar_usuario(dni, name, surname, email, phone, password, password2):
 
     error = True
 

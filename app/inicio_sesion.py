@@ -3,9 +3,15 @@ import correo_2FA
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
 codigo_verificacion = None
+password_key = None
+identificador = None
 
 def login_usuario(dni, password):
     global codigo_verificacion
+    global password_key
+    global identificador
+    password_key = password
+    identificador = dni
     error = True
 
     # Consultamos los datos relevantes para el log-in en la base de datos
@@ -50,3 +56,12 @@ def comprobar_codigo_verificación(codigo_introducido):
         respuesta = "Código de verificacion incorrecto"
         estado = "error"
     return [respuesta, estado]
+
+
+def pasar_password():
+    global password_key
+    return password_key
+
+def pasar_identificador():
+    global identificador
+    return identificador

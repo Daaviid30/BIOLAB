@@ -10,6 +10,17 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     </head>
     <body>
+        {% if msg %}
+            <p class="{{ msg_class }}" id="msg_sing-up">{{msg}}</p>
+        {% endif %}
+
+        <script>
+            var parrafo = document.getElementById("msg_sing-up")
+
+            setTimeout(function(){
+                parrafo.style.display = "none";
+            }, 4000);
+        </script>
         <div class="panel-principal" id="principal">
             <h1>Nueva entrada</h1>
             <form class="login" action="/form-principal" method="post">
@@ -17,6 +28,16 @@
                 <textarea name="cuerpo" class="campo" cols="70" rows="7" maxlength="10000" placeholder="Cuerpo del mensaje" required></textarea><br>
                 <input type="submit" class="campo" id="enviar">
             </form>
+        </div>
+        <div id="papers">
+            {% if titulos %}
+                {% for item in titulos %}
+                    <form method="POST" action="/paper">
+                        <input type="hidden" name="titulo" value="{{ item[0] }}">
+                        <input type="submit" class="titulo-paper" value="{{ item[0] }}">
+                    </form>
+                {% endfor %}
+            {% endif %}
         </div>
     </body>
 </html>

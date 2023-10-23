@@ -4,6 +4,7 @@ Autores: David Martín (100472099) / Iván Llorente (100472242)"""
 #Importamos las librerias necesarias para la ejecución de la app
 import inicio_sesion
 import registro
+import papers
 from flask import Flask, request, render_template
 
 # Creamos la aplicación Flask
@@ -40,7 +41,7 @@ def form_singup():
     password = request.form['password']
     password2 = request.form['password2']
 
-    mensaje_estado = registro.registro_usuario(dni, name, surname, email, phone, password, password2)
+    mensaje_estado = registro.registrar_usuario(dni, name, surname, email, phone, password, password2)
     return render_template('singup.html', msg=mensaje_estado[0], msg_class=mensaje_estado[1])
 
 
@@ -57,12 +58,22 @@ def form_2fa():
 
 @app.route('/principal')
 def principal():
-    return render_template('principal.html')
+    titulos = papers.listar_papers()
+    return render_template('principal.html', titulos=titulos)
 
 @app.route('/form-principal', methods=['POST'])
 def form_principal():
     titulo = request.form['titulo']
     cuerpo = request.form['cuerpo']
+
+    mensaje, estado = papers.guardar_paper(titulo, cuerpo)
+    titulos = papers.listar_papers()
+    return render_template('principal.html', msg=mensaje, msg_class=estado, titulos=titulos)
+
+@app.route('/paper', methods=['POST'])
+def paper():
+    titulo  = request.form.get('titulo')
+    return render_template('paper.html', titulo=titulo)
 
 # Ejecución del programa
 if __name__ == '__main__':

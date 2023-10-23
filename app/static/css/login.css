@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     border: 0;
+    width: 100%;
     background-color: rgb(0, 0, 0);
     
 }
@@ -110,4 +111,39 @@ body{
 #principal{
     max-width: 80%;
     margin: 7% auto;
+}
+
+#papers{
+    display: flex;
+    margin-bottom:5%;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+#papers form{
+    width: 100%;
+    margin: 0% auto;
+}
+
+.titulo-paper{
+    text-decoration: none;
+    width: 50%;
+    height: auto;
+    text-align: center;
+    color: black;
+    background-color: rgb(122, 223, 149);
+    margin: 0.8% 0;
+    border-color: rgb(59, 122, 76);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 3px;
+}
+
+.titulo-paper:hover{
+    background-color:  rgb(59, 122, 76);
+    border-color: rgb(157, 255, 183);
+    color: white;
 }
