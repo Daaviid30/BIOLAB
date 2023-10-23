@@ -72,7 +72,7 @@ def form_principal():
 
 @app.route('/paper', methods=['POST'])
 def paper():
-    titulo  = request.form.get('titulo')
+    titulo  = request.form['titulo']
     cuerpo = papers.recuperar_cuerpo(titulo)
     return render_template('paper.html', titulo=titulo, cuerpo=cuerpo)
 
