@@ -12,10 +12,24 @@
     </head>
 
     <body>
+
+        {% if msg %}
+            <p class="{{ msg_class }}" id="msg_paper">{{ msg }}</p>
+        {% endif %}
+
+        <script>
+            var parrafo = document.getElementById("msg_paper")
+
+            setTimeout(function(){
+                parrafo.style.display = "none";
+            }, 1500);
+        </script>
+
         <h1 id="titulo-paper">{{ titulo }}</h1>
         <div class="cuerpo-paper">
             <p>{{ cuerpo }}</p>
         </div>
+
     </body>
     
 </html>

@@ -50,18 +50,29 @@ def listar_papers():
 def recuperar_cuerpo(titulo):
     identificador = pasar_identificador()
     password = pasar_password()
-    consulta = "SELECT cuerpo, salt, nonce FROM papers WHERE dni = %s AND titulo = %s"
-    values = (identificador, titulo)
-    conexion_db.cursor.execute(consulta, values)
-    resultados = conexion_db.cursor.fetchall()
-    kdf = PBKDF2HMAC(
+
+    try:
+        consulta = "SELECT cuerpo, salt, nonce FROM papers WHERE dni = %s AND titulo = %s"
+        values = (identificador, titulo)
+        conexion_db.cursor.execute(consulta, values)
+        resultados = conexion_db.cursor.fetchall()
+
+        kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         length=32,
         salt=resultados[0][1],
         iterations=333333)
-    key = kdf.derive(password.encode('utf-8'))
+        key = kdf.derive(password.encode('utf-8'))
 
-    chacha = ChaCha20Poly1305(key)
-    cuerpo = chacha.decrypt(resultados[0][2], resultados[0][0], titulo.encode('utf-8'))
+        chacha = ChaCha20Poly1305(key)
+        cuerpo = chacha.decrypt(resultados[0][2], resultados[0][0], titulo.encode('utf-8'))
+        cuerpo = cuerpo.decode('utf-8')
+        mensaje = "El paper ha sido recuperado correctamente"
+        estado = "acceso"
 
-    return cuerpo.decode('utf-8')
+    except:
+        cuerpo = None
+        mensaje = "No se pudo recuperar el paper"
+        estado = "error"
+
+    return cuerpo, mensaje, estado
