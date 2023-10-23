@@ -12,7 +12,7 @@ CREATE TABLE usuarios(
 CREATE TABLE papers(
     dni CHAR(9) NOT NULL,
     titulo VARCHAR(150) NOT NULL,
-    cuerpo VARCHAR(10000) NOT NULL,
+    cuerpo BLOB NOT NULL,
     salt BLOB NOT NULL,
     nonce BLOB NOT NULL,
     PRIMARY KEY (dni,titulo),

@@ -120,7 +120,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 0% auto;
+    margin: 0% auto 5% auto;
 }
 
 #papers form{
@@ -146,4 +146,23 @@ body{
     background-color:  rgb(59, 122, 76);
     border-color: rgb(157, 255, 183);
     color: white;
+}
+
+.cuerpo-paper{
+    background-color: rgb(0, 43, 26);
+    color:rgb(186, 255, 205);
+    max-width: 85%;
+    height: auto;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: greenyellow;
+    border-style: solid;
+    text-align: center;
+    margin: 14% auto;
+}
+
+#titulo-paper{
+    color: rgb(75, 182, 103);
+    text-shadow: 1px 1px 1px rgb(157, 255, 183);
+    text-align: center;
 }

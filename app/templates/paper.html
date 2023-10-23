@@ -4,9 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>{{ titulo }}</title>
+        <title>BioLab</title>
         <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/biologia.png') }}">
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     </head>
+    <body>
+        <h1 id="titulo-paper">{{ titulo }}</h1>
+        <div class="cuerpo-paper">
+            <p>{{ cuerpo }}</p>
+        </div>
+    </body>
 </html>
