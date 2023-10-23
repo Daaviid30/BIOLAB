@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Bio-Login</title>
+        <title>Biolab-Login</title>
         <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/biologia.png') }}">
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
+
     <body>
 
         {% if msg %}
@@ -33,6 +35,7 @@
         </script>
         
         <img src="{{ url_for('static', filename='images/adn.png') }}" id="adn">
+
         <div class="panel-principal">
             <h1>Inicio de sesion</h1>
             <form class="login" action="/formulario" method="post">
@@ -42,5 +45,7 @@
             </form>
             <a href="/sing-up" id="sing-up">Sign Up</a>
         </div>
+
     </body>
+    
 </html>

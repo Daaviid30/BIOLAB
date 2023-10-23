@@ -60,7 +60,7 @@ body{
     margin: 14% auto;
 }
 
-.panel-principal h1{
+.verde-claro{
     color: rgb(0, 230, 103);
 }
 
@@ -110,7 +110,7 @@ body{
 
 #principal{
     max-width: 80%;
-    margin: 7% auto;
+    margin: 5% auto 4% auto;
 }
 
 #papers{
@@ -128,7 +128,7 @@ body{
     margin: 0% auto;
 }
 
-.titulo-paper{
+.titulos-papers{
     text-decoration: none;
     width: 100%;
     height: auto;
@@ -142,13 +142,15 @@ body{
     border-radius: 3px;
 }
 
-.titulo-paper:hover{
+.titulos-papers:hover{
     background-color:  rgb(59, 122, 76);
     border-color: rgb(157, 255, 183);
     color: white;
 }
 
 .cuerpo-paper{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(0, 43, 26);
     color:rgb(186, 255, 205);
     max-width: 85%;
@@ -157,11 +159,17 @@ body{
     border-width: 3px;
     border-color: greenyellow;
     border-style: solid;
-    text-align: center;
-    margin: 14% auto;
+    text-align: justify;
+    margin: 10% auto;
+}
+
+.cuerpo-paper p{
+    margin: 2%;
+    word-wrap: break-word;
 }
 
 #titulo-paper{
+    margin-top: 2%;
     color: rgb(75, 182, 103);
     text-shadow: 1px 1px 1px rgb(157, 255, 183);
     text-align: center;
