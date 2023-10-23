@@ -114,28 +114,28 @@ body{
 }
 
 #papers{
-    display: flex;
-    margin-bottom:5%;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    margin: 0% auto;
 }
 
 #papers form{
-    width: 100%;
+    width: 50%;
     margin: 0% auto;
 }
 
 .titulo-paper{
     text-decoration: none;
-    width: 50%;
+    width: 100%;
     height: auto;
     text-align: center;
     color: black;
     background-color: rgb(122, 223, 149);
-    margin: 0.8% 0;
+    margin: 0.8%;
     border-color: rgb(59, 122, 76);
     border-width: 2px;
     border-style: solid;
