@@ -60,6 +60,10 @@ body{
     margin: 14% auto;
 }
 
+.panel-principal h1{
+    color: rgb(0, 230, 103);
+}
+
 .verde-claro{
     color: rgb(0, 230, 103);
 }
