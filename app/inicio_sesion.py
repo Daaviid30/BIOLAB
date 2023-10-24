@@ -2,16 +2,20 @@ import conexion_db
 import correo_2FA
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
+# Definimos una serie de variables globales que luego utilizaremos en otros ficheros y funciones
 codigo_verificacion = None
 password_key = None
 identificador = None
 
+# Creamos la funcion que manejara y comprobara los datos introducidos en el formulario de login
 def login_usuario(dni, password):
     global codigo_verificacion
     global password_key
     global identificador
+    # Damos valor a las variables globales password e identificador
     password_key = password
     identificador = dni
+    # En caso de que todos los datos introducidos sean correctos y no de error, se cambiara el valor a True
     error = True
 
     # Consultamos los datos relevantes para el log-in en la base de datos
@@ -46,7 +50,8 @@ def login_usuario(dni, password):
     # Devolvemos un mensaje en la pagina de log-in, este varía dependiendo de si la contraseña es correcta o no
     if error == True:    
         return [respuesta, "error"]
-    
+
+# Creamos la funcion que comprueba si el codigo de verificacion mandado por correo es correcto
 def comprobar_codigo_verificación(codigo_introducido):
     global codigo_verificacion
     if str(codigo_introducido) == str(codigo_verificacion):
@@ -57,7 +62,7 @@ def comprobar_codigo_verificación(codigo_introducido):
         estado = "error"
     return [respuesta, estado]
 
-
+# Creamos dos funciones las cuales van a dar valor a las variables globales cuando se llamen de otro fichero
 def pasar_password():
     global password_key
     return password_key
