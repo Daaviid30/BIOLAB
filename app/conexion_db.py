@@ -1,5 +1,6 @@
 import mysql.connector
 
+# Datos de configuracion de la base de datos
 configuracion = {
     'user':'root',
     'password':'',
@@ -8,6 +9,7 @@ configuracion = {
     'database':'biolab'
 }
 
+# Conectamos con la base de datos
 conexion = mysql.connector.connect(**configuracion)
 
 if conexion.is_connected():
@@ -15,4 +17,5 @@ if conexion.is_connected():
 else:
     raise Exception("Error al conectarse")
 
+# Si la conexión se establece creamos un cursor para realizar operaciones con la bbdd
 cursor = conexion.cursor()
